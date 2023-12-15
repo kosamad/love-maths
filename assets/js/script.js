@@ -85,8 +85,10 @@ function checkAnswer() {
     // the value out of the array
     if (isCorrect) {
         alert('Hey! You got it right! :D');
+        incrementScore();
     } else {
         alert(`Awwww.....you answered ${userAnswer}. The correct answer was ${calculatedAnswer[0]}!`);
+        incrementWrongAnswer();
     }
 
     // last thing is to run another game of the same type so use the second element from the calculated correct answer array.
@@ -123,13 +125,28 @@ function calculateCorrectAnswer() {
 
 }
 
-function incrementScore() {
+/**
+ *Gets the current score from the DOM and icrements it by 1
+ */
 
+function incrementScore() {
+    //textContent and innner text are interchangable
+    let oldScore = parseInt(document.getElementById('score').innerText);
+
+        //write back to DOM, inner text is going to incremented score. ++ means add one to the value before it's written.
+    document.getElementById('score').innerText = ++oldScore;
 
 }
 
+/**
+ *Gets the current tally of incorrect answers from the DOM and icrements it by 1
+ */
+
 function incrementWrongAnswer() {
 
+
+    let oldScore = parseInt(document.getElementById('incorrect').innerText);     
+    document.getElementById('incorrect').innerText = ++oldScore;
 
 }
 
