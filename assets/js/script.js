@@ -26,9 +26,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 // otherwise set game type to value of this attribute
 
                 let gameType = this.getAttribute('data-type');
-                alert(`You clicked ${gameType}`);
+                runGame(gameType);;
             }
         });
+
+        // want this to start as soon as page is loaded (default game)
+
+        runGame('addition');
+
+
+
     }
 
 });
@@ -39,12 +46,23 @@ document.addEventListener('DOMContentLoaded', function () {
  * The main game "loop", called when the script is first loaded
  * and after the user's answer has been processed
  */
-function runGame() {
 
-     // creates 2 random numbers betweem 1 and 25
+// gameType is the parameters the function accepts, so gameType is passed into the function as an argument.
+function runGame(gameType) {
+
+    // creates 2 random numbers betweem 1 and 25
     let num1 = Math.floor(Math.random() * 25) + 1;
     let num2 = Math.floor(Math.random() * 25) + 1;
+    // check which game is running
 
+    if (gameType === 'addition') {
+        displayAdditionQuestion(num1, num2);
+    } else {
+        alert(`unknown game type: ${gameType}`);
+        // throw stops game running and prints to console to add debugging
+        throw `unknown game type: ${gameType}, Aborting!`;
+
+    }
 }
 
 function checkAnswer() {
@@ -67,7 +85,13 @@ function incrementWrongAnswer() {
 
 }
 
-function displayAdditionQuestion() {
+ // two arguments that are accepted are operand1 and 2
+function displayAdditionQuestion(operand1, operand2) {
+     // find element and set the text content to our number.
+    document.getElementById('operand1').textContent = operand1;
+    document.getElementById('operand2').textContent = operand2;
+    document.getElementById('operator').textContent = '+';
+
 
 
 }
