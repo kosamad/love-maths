@@ -33,8 +33,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
+// docstring used to descibe function, will appear when hover over a function in another place in this document
+
+/**
+ * The main game "loop", called when the script is first loaded
+ * and after the user's answer has been processed
+ */
 function runGame() {
 
+     // creates 2 random numbers betweem 1 and 25
+    let num1 = Math.floor(Math.random() * 25) + 1;
+    let num2 = Math.floor(Math.random() * 25) + 1;
 
 }
 
