@@ -18,11 +18,11 @@
 
     <div class="game-area">
         <div class="controls-area">
-            
-            <button class="btn btn--big btn--green"><i class="fa-solid fa-plus"></i></button>
-            <button class="btn btn--big btn--blue"><i class="fa-solid fa-minus"></i></button>
-            <button class="btn btn--big btn--orange"><i class="fa-solid fa-times"></i></button>
-            <button class="btn btn--big btn--red"><i class="fa-solid fa-divide"></i></button>
+            <!-- creation of own HTML attribute req prefix of data -->
+            <button data-type ="addition"  class="btn btn--big btn--green"><i class="fa-solid fa-plus"></i></button>
+            <button data-type ="subtract"class="btn btn--big btn--blue"><i class="fa-solid fa-minus"></i></button>
+            <button data-type ="multiply"class="btn btn--big btn--orange"><i class="fa-solid fa-times"></i></button>
+            <button data-type ="division"class="btn btn--big btn--red"><i class="fa-solid fa-divide"></i></button>
         </div>
 
         <div class="question-area">
@@ -33,7 +33,7 @@
             <p class="answer-message">Enter Answer:</p>
             <input id="answer-box" type="number">
             </div>
-            <button class="btn btn--grey">Submit Answer</button>
+            <button data-type="submit" class="btn btn--grey">Submit Answer</button>
       </div>
 
 
