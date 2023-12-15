@@ -57,7 +57,7 @@ function runGame(gameType) {
 
     if (gameType === 'addition') {
         displayAdditionQuestion(num1, num2);
-    } else {
+    } else if (else {
         alert(`unknown game type: ${gameType}`);
         // throw stops game running and prints to console to add debugging
         throw `unknown game type: ${gameType}, Aborting!`;
