@@ -32,6 +32,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
+    // Allowing the user to press enter to submit an answer as well as click
+    //listening for a key press (the "event"). Calls a function with an the "event" object. Then check a property of that object, here 
+    // looking for if the key that was pressed was enter. if yes, then call the checkasnwer function. 
+
+    document.getElementById("answer-box").addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            checkAnswer();
+        }
+    });
     // want this to start as soon as page is loaded (default game)
 
     runGame('addition');
@@ -48,6 +57,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // gameType is the parameters the function accepts, so gameType is passed into the function as an argument.
 function runGame(gameType) {
+    // improving the user experience, each time the rubGame finction is run, it sets the answer box to an empty string.
+    //rather than the user having to delete. 
+    document.getElementById('answer-box').value = "";
+
+    //putting cursor in the box automatically. Called "setting the focus" the answer box becomes the focus of the page each time. 
+    document.getElementById('answer-box').focus();
 
     // creates 2 random numbers betweem 1 and 25
     let num1 = Math.floor(Math.random() * 25) + 1;
@@ -58,6 +73,8 @@ function runGame(gameType) {
         displayAdditionQuestion(num1, num2);
     } else if (gameType === "multiply") {
         displayMultiplyQuestion(num1, num2);
+    } else if (gameType === "subtract") {
+        displaySubtractQuestion(num1, num2);
     } else {
         alert(`Unknown game type: ${gameType}`);
         // throw stops game running and prints to console to add debugging
@@ -118,6 +135,8 @@ function calculateCorrectAnswer() {
         return [operand1 + operand2, "addition"];
     } else if (operator === "x") {
         return [operand1 * operand2, "multiply"];
+    } else if (operator === "-") {
+        return [operand1 - operand2, "subtract"];
     } else {
         alert(`Unimplemented operator ${operator}`);
         throw `Unimplemented operator ${operator}. Aborting!`;
@@ -150,6 +169,10 @@ function incrementWrongAnswer() {
 
 }
 
+//Setting the games up 1. Add the gameType to the runGame()
+//2. Create the display question function
+//3. Modify the calculate correct answer function. 
+
 // two arguments that are accepted are operand1 and 2
 function displayAdditionQuestion(operand1, operand2) {
     // find element and set the text content to our number.
@@ -161,9 +184,14 @@ function displayAdditionQuestion(operand1, operand2) {
 
 }
 
-function displaySubtractQuestion() {
-
-
+// two arguments that are accepted are operand1 and 2
+// don't want the answer to be a negative number therefore needs more checks. 
+function displaySubtractQuestion(operand1, operand2) {
+    // ternary operator used to get the larger of the two numbers. This ensures it won't create a negative answer.
+    // could have used an if statement but this is shorter. "which is bigger: operand1 or operand 2 (condition cheked is bfore the ?) ? if operand1 is bigger, return that. If opernad 2 is bigger (the else after the :), return that instead. " 
+    document.getElementById('operand1').textContent = operand1 > operand2 ? operand1 : operand2;
+    document.getElementById('operand2').textContent = operand1 > operand2 ? operand2 : operand1;
+    document.getElementById('operator').textContent = "-";
 }
 
 function displayMultiplyQuestion(operand1, operand2) {

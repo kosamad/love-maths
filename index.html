@@ -1,49 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- font awesome and google fonts -->
-    <script src="https://kit.fontawesome.com/309feeb7ba.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css?family=Raleway%7CRighteous" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <script
+      src="https://kit.fontawesome.com/309feeb7ba.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway%7CRighteous"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <!-- adds favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="logo.png" />
     <title>Love Maths</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1 class="heading">
-        <img class="logo" src="assets/images/logo.png" alt="logo"> Love Maths
+      <img class="logo" src="assets/images/logo.png" alt="logo" /> Love Maths
     </h1>
 
     <div class="game-area">
-        <div class="controls-area">
-            <!-- creation of own HTML attribute req prefix of data -->
-            <button data-type ="addition"  class="btn btn--big btn--green"><i class="fa-solid fa-plus"></i></button>
-            <button data-type ="subtract" class="btn btn--big btn--blue"><i class="fa-solid fa-minus"></i></button>
-            <button data-type ="multiply" class="btn btn--big btn--orange"><i class="fa-solid fa-times"></i></button>
-            <button data-type ="division" class="btn btn--big btn--red"><i class="fa-solid fa-divide"></i></button>
-        </div>
-
-        <div class="question-area">
-            <!-- operator is set by JS-->
-            <span id="operand1">0</span>
-            <span id="operator">x</span>
-            <span id="operand2">0</span>
-            <span>=</span>
-            <p class="answer-message">Enter Answer:</p>
-            <input id="answer-box" type="number">
-            </div>
-            <button data-type="submit" class="btn btn--grey">Submit Answer</button>
+      <div class="controls-area">
+        <!-- creation of own HTML attribute req prefix of data -->
+        <button data-type="addition" class="btn btn--big btn--green">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <button data-type="subtract" class="btn btn--big btn--blue">
+          <i class="fa-solid fa-minus"></i>
+        </button>
+        <button data-type="multiply" class="btn btn--big btn--orange">
+          <i class="fa-solid fa-times"></i>
+        </button>
+        <button data-type="division" class="btn btn--big btn--red">
+          <i class="fa-solid fa-divide"></i>
+        </button>
       </div>
 
+      <div class="question-area">
+        <!-- operator is set by JS-->
+        <span id="operand1">0</span>
+        <span id="operator">x</span>
+        <span id="operand2">0</span>
+        <span>=</span>
+        <p class="answer-message">Enter Answer:</p>
+        <input id="answer-box" type="number" />
+      </div>
+      <button data-type="submit" class="btn btn--grey">Submit Answer</button>
+    </div>
 
     <div class="score-area">
-
-        <p class="scores">Correct Answers <span id="score">0</span></p>
-        <p class="scores">Incorrect Answers <span id="incorrect">0</span></p>
+      <p class="scores">Correct Answers <span id="score">0</span></p>
+      <p class="scores">Incorrect Answers <span id="incorrect">0</span></p>
     </div>
 
     <script src="assets/js/script.js"></script>
-</body>
+  </body>
 </html>
