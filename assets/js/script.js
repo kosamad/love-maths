@@ -30,13 +30,12 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
-        // want this to start as soon as page is loaded (default game)
-
-        runGame('addition');
-
-
-
     }
+
+    // want this to start as soon as page is loaded (default game)
+
+    runGame('addition');
+
 
 });
 
@@ -57,12 +56,14 @@ function runGame(gameType) {
 
     if (gameType === 'addition') {
         displayAdditionQuestion(num1, num2);
-    } else if (else {
-        alert(`unknown game type: ${gameType}`);
+    } else if (gameType === "multiply") {
+        displayMultiplyQuestion(num1, num2);
+    } else {
+        alert(`Unknown game type: ${gameType}`);
         // throw stops game running and prints to console to add debugging
-        throw `unknown game type: ${gameType}, Aborting!`;
-
+        throw `Unknown game type: ${gameType}. Aborting!`;
     }
+
 }
 
 /**
@@ -95,8 +96,6 @@ function checkAnswer() {
 
     runGame(calculatedAnswer[1]);
 
-
-
 }
 
 /**
@@ -115,13 +114,14 @@ function calculateCorrectAnswer() {
     //second is stored as operand 2 and sotred the plus sign in the operator) and returns an 
     //array which has 2 elements 1.the result and 2. the game type coming up next (addition unless changed)
 
-    if (operator === '+') {
-        return [operand1 + operand2, 'addition'];
+    if (operator === "+") {
+        return [operand1 + operand2, "addition"];
+    } else if (operator === "x") {
+        return [operand1 * operand2, "multiply"];
     } else {
-        alert(`Uniplemented operator${operator}`);
-        throw `Uniplemented operator${operator}. Aborting!`;
+        alert(`Unimplemented operator ${operator}`);
+        throw `Unimplemented operator ${operator}. Aborting!`;
     }
-
 
 }
 
@@ -133,7 +133,7 @@ function incrementScore() {
     //textContent and innner text are interchangable
     let oldScore = parseInt(document.getElementById('score').innerText);
 
-        //write back to DOM, inner text is going to incremented score. ++ means add one to the value before it's written.
+    //write back to DOM, inner text is going to incremented score. ++ means add one to the value before it's written.
     document.getElementById('score').innerText = ++oldScore;
 
 }
@@ -145,7 +145,7 @@ function incrementScore() {
 function incrementWrongAnswer() {
 
 
-    let oldScore = parseInt(document.getElementById('incorrect').innerText);     
+    let oldScore = parseInt(document.getElementById('incorrect').innerText);
     document.getElementById('incorrect').innerText = ++oldScore;
 
 }
@@ -166,7 +166,9 @@ function displaySubtractQuestion() {
 
 }
 
-function displayMultiplyQuestion() {
-
+function displayMultiplyQuestion(operand1, operand2) {
+    document.getElementById('operand1').textContent = operand1;
+    document.getElementById('operand2').textContent = operand2;
+    document.getElementById('operator').textContent = "x";
 
 }
